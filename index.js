@@ -1,4 +1,4 @@
-import * as firebase from 'firebase-admin';
+const firebase = require.main.require('firebase-admin');
 
 
 const createFirebaseAuth = ({ ignoredUrls, serviceAccount }) => {
@@ -39,4 +39,6 @@ const createFirebaseAuth = ({ ignoredUrls, serviceAccount }) => {
 };
 
 
-export { createFirebaseAuth };
+module.exports = {
+  createFirebaseAuth
+};
