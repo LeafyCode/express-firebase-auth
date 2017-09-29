@@ -2,6 +2,11 @@
 
 Authenticate your endpoints with Firebase auth.
 
+## Features:
+
+- Authenticate the user using Firebase before running the function.
+- Ability to skip authentication on public API endpoints.
+
 ## Usage:
 
 ```
