@@ -8,18 +8,6 @@ Authenticate your endpoints with Firebase auth.
 - Authenticate the user using Firebase before running the function.
 - Ability to skip authentication on public API endpoints.
 
-## Usage:
-
-```
-yarn install git@github.com:LeafyCode/express-firebase-auth.git
-```
-
-In your app:
-
-```
-import serviceAccount from '../firebase-config.json'; // Get this from the Firebase console.
-
-```
 
 ## Installing / Getting started
 
@@ -49,6 +37,8 @@ app.use(firebaseAuth);
 | -------------    |:------------------------------------------------------------------------------------------------------------:|
 | `serviceAccount` | (**Required**) [Obtain this from firebase](https://firebase.google.com/docs/admin/setup#initialize_the_sdk)  |
 | `ignoredUrls`    | (*Optional*) An array of URLs where you need to skip the authentication.                                     |
+
+This package adds the `user` object returned by firebase to `res.locals.user`. You can use that inside your functions.
 
 ## Developing
 
