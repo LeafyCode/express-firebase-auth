@@ -1,5 +1,5 @@
 # Express Firebase Auth Middleware
-[![npm version](https://badge.fury.io/js/express-firebase-auth@2x.png)](https://badge.fury.io/js/express-firebase-auth)
+[![npm version](https://badge.fury.io/js/express-firebase-auth.svg)](https://badge.fury.io/js/express-firebase-auth)
 
 Authenticate your endpoints with Firebase auth.
 
