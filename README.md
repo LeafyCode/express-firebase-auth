@@ -1,4 +1,5 @@
 # Express Firebase Auth Middleware
+[![npm](https://img.shields.io/npm/v/npm.svg?style=flat-square)](https://www.npmjs.com/package/express-firebase-auth)
 
 Authenticate your endpoints with Firebase auth.
 
