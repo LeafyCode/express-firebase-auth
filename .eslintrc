@@ -1,40 +1,45 @@
 {
-    "env": {
-      "browser": true,
-      "es6": true,
-      "node": true
-    },
-    "extends": "airbnb",
-    "parser": "babel-eslint",
-    "rules": {
-      func-names: ["error", "never"],
-      // code arrangement matter
-      "no-use-before-define": [2, {
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "extends": "airbnb",
+  "parser": "babel-eslint",
+  "rules": {
+    "func-names": ["error", "never"],
+    // code arrangement matter
+    "no-use-before-define": [
+      2,
+      {
         "functions": false
-      }],
-  
-      "comma-dangle": ["error", "never"],
-  
-      "react/prop-types": 0,
-  
-      "global-require": 0,
-  
-      "no-underscore-dangle": 0,
-  
-      // Enable html inside js (Only for react native)
-      "react/jsx-filename-extension": ["error", {
+      }
+    ],
+
+    "comma-dangle": ["error", "never"],
+
+    "react/prop-types": 0,
+
+    "global-require": 0,
+
+    "no-underscore-dangle": 0,
+
+    // Enable html inside js (Only for react native)
+    "react/jsx-filename-extension": [
+      "error",
+      {
         "extensions": [".js", ".jsx"]
-      }],
-  
-      "max-len": [2, 100, 4],
-  
-      "import/prefer-default-export": 0
-  
-      // react
-      // "react/prefer-es6-class": 0,
-      // "react/jsx-filename-extension": 0,
-      // "react/jsx-curly-spacing": [2, "always"],
-      // "react/jsx-indent": [2, 4]
-    }
+      }
+    ],
+
+    "max-len": [2, 100, 4],
+
+    "import/prefer-default-export": 0
+
+    // react
+    // "react/prefer-es6-class": 0,
+    // "react/jsx-filename-extension": 0,
+    // "react/jsx-curly-spacing": [2, "always"],
+    // "react/jsx-indent": [2, 4]
   }
-  
+}
