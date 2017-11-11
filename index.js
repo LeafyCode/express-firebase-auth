@@ -1,19 +1,27 @@
-const firebase = require.main.require('firebase-admin');
-
-const createFirebaseAuth = ({ ignoredUrls, serviceAccount }) => {
-  if (!serviceAccount) {
+const createFirebaseAuth = ({ ignoredUrls, serviceAccount, firebase }) => {
+  if (!serviceAccount && !firebase) {
     /* eslint-disable no-console */
-    console.log('***************************************************************');
-    console.log('Please provide the Firebase serviceAccount object!');
-    console.log('***************************************************************');
+    console.log(
+      '*********************************************************************************'
+    );
+    console.log(
+      'Please provide the Firebase serviceAccount object or an initialized firebasee app!'
+    );
+    console.log(
+      '*********************************************************************************'
+    );
     /* eslint-enable no-console */
   }
 
-  // Initialize firebase
-  firebase.initializeApp({
-    credential: firebase.credential.cert(serviceAccount),
-    databaseURL: `https://${process.env.FIREBASE_DATABASE_NAME}.firebaseio.com`
-  });
+  // If the user has passed an initialized firebase app, use that
+  // or initialize one using the serviceAccount object.
+  const firebaseAdmin = firebase || require.main.require('firebase-admin');
+  if (!firebase) {
+    firebaseAdmin.initializeApp({
+      credential: firebaseAdmin.credential.cert(serviceAccount),
+      databaseURL: `https://${process.env.FIREBASE_DATABASE_NAME}.firebaseio.com`
+    });
+  }
 
   return (req, res, next) => {
     if (ignoredUrls && ignoredUrls.includes(req.originalUrl)) {
@@ -30,7 +38,7 @@ const createFirebaseAuth = ({ ignoredUrls, serviceAccount }) => {
       const idToken = authorizationHeader.split(' ').pop();
 
       // Authenticate user
-      firebase
+      firebaseAdmin
         .auth()
         .verifyIdToken(idToken)
         .then((user) => {

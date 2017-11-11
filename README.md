@@ -33,10 +33,17 @@ const firebaseAuth = createFirebaseAuth({
 app.use(firebaseAuth);
 ```
 
-| Option           | Value                                                                                                        |
-| -------------    |:------------------------------------------------------------------------------------------------------------:|
-| `serviceAccount` | (**Required**) [Obtain this from firebase](https://firebase.google.com/docs/admin/setup#initialize_the_sdk)  |
-| `ignoredUrls`    | (*Optional*) An array of URLs where you need to skip the authentication.                                     |
+| Option           | Value                                                                                                                     |
+| -------------    |:-------------------------------------------------------------------------------------------------------------------------:|
+| `serviceAccount` | ([**Note1**](#note1)) [Obtain this from firebase](https://firebase.google.com/docs/admin/setup#initialize_the_sdk)        |
+| `firebase`       | ([**Note1**](#note1)) An initialized firebase app. [Refer Firebase setup](https://firebase.google.com/docs/admin/setup)   |
+| `ignoredUrls`    | (*Optional*) An array of URLs where you need to skip the authentication.                                                  |
+
+#### Note1
+You **must** provide either the `serviceAccount` credentials or an already initialized `firebase` app.
+If you are planning to use other services of Firebase in your app, you should initialize your own app.
+If you only want the authentication part, you can simply pass the `serviceAccount` credentials and `express-firebase-auth` will initialize the app for you.
+You cannot initialize two firebase apps.
 
 This package adds the `user` object returned by firebase to `res.locals.user`. You can use that inside your functions.
 
