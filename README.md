@@ -67,3 +67,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 ## Style guide
 
 Always follow the AirBnb Style Guide.
+
+## License
+
+[MIT licensed](./LICENSE).
