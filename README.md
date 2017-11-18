@@ -33,11 +33,12 @@ const firebaseAuth = createFirebaseAuth({
 app.use(firebaseAuth);
 ```
 
-| Option           | Value                                                                                                                     |
-| -------------    |:-------------------------------------------------------------------------------------------------------------------------:|
-| `serviceAccount` | ([**Note1**](#note1)) [Obtain this from firebase](https://firebase.google.com/docs/admin/setup#initialize_the_sdk)        |
-| `firebase`       | ([**Note1**](#note1)) An initialized firebase app. [Refer Firebase setup](https://firebase.google.com/docs/admin/setup)   |
-| `ignoredUrls`    | (*Optional*) An array of URLs where you need to skip the authentication.                                                  |
+| Option                  | Value                                                                                                                     |
+| -------------           |:-------------------------------------------------------------------------------------------------------------------------:|
+| `serviceAccount`        | ([**Note1**](#note1)) [Obtain this from firebase](https://firebase.google.com/docs/admin/setup#initialize_the_sdk)        |
+| `firebase`              | ([**Note1**](#note1)) An initialized firebase app. [Refer Firebase setup](https://firebase.google.com/docs/admin/setup)   |
+| `ignoredUrls`           | (*Optional*) An array of URLs where you need to skip the authentication.                                                  |
+| `checkEmailVerified`    | (*Optional*) (Default: **false**) If set to **true**, only users with a verified email will be allowed access.     |
 
 #### Note1
 You **must** provide either the `serviceAccount` credentials or an already initialized `firebase` app.

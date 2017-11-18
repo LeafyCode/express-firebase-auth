@@ -1,4 +1,9 @@
-const createFirebaseAuth = ({ ignoredUrls, serviceAccount, firebase }) => {
+const createFirebaseAuth = ({
+  ignoredUrls,
+  serviceAccount,
+  firebase,
+  checkEmailVerified = false
+}) => {
   if (!serviceAccount && !firebase) {
     /* eslint-disable no-console */
     console.log(
@@ -42,8 +47,14 @@ const createFirebaseAuth = ({ ignoredUrls, serviceAccount, firebase }) => {
         .auth()
         .verifyIdToken(idToken)
         .then((user) => {
+          // If checkEmailVerified is true, deny the request if the user's email is not verified
+          if (checkEmailVerified && !user.email_verified) {
+            res.status(401);
+            return res.send({ error: 'You are not autherized!' });
+          }
+
           res.locals.user = user; // Set the user object to locals
-          next();
+          return next();
         })
         .catch((error) => {
           res.status(401);
