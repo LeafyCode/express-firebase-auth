@@ -47,7 +47,7 @@ const createFirebaseAuth = ({
       firebaseAdmin
         .auth()
         .verifyIdToken(idToken)
-        .then((user) => {
+        .then(user => {
           // If checkEmailVerified is true, deny the request if the user's email is not verified
           // Skip if the url is in checkEmailVerifiedIgnoredUrls
           if (
@@ -63,7 +63,7 @@ const createFirebaseAuth = ({
           res.locals.user = user; // Set the user object to locals
           return next();
         })
-        .catch((error) => {
+        .catch(error => {
           res.status(401);
           res.send({ error: 'You are not autherized!' });
 
