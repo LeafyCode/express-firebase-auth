@@ -30,7 +30,7 @@ const createFirebaseAuth = ({
   }
 
   return (req, res, next) => {
-    if (ignoredUrls && ignoredUrls.includes(req.originalUrl)) {
+    if (ignoredUrls && ignoredUrls.includes(req.path)) {
       next(); // If the url is in `ignoredUrls`, skip the autherization.
     } else {
       const authorizationHeader = req.header('Authorization');
