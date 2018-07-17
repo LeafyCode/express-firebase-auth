@@ -11,7 +11,7 @@ const createFirebaseAuth = ({
       '*********************************************************************************'
     );
     console.log(
-      'Please provide the Firebase serviceAccount object or an initialized firebasee app!'
+      'Please provide the Firebase serviceAccount object or an initialized firebase app!'
     );
     console.log(
       '*********************************************************************************'
@@ -31,14 +31,14 @@ const createFirebaseAuth = ({
 
   return (req, res, next) => {
     if (ignoredUrls && ignoredUrls.includes(req.path)) {
-      next(); // If the url is in `ignoredUrls`, skip the autherization.
+      next(); // If the url is in `ignoredUrls`, skip the authorization.
     } else {
       const authorizationHeader = req.header('Authorization');
 
-      // Send an error if the autherization header is missing
+      // Send an error if the authorization header is missing
       if (!authorizationHeader) {
         res.status(401);
-        return res.send({ error: 'Missing autherization header!' });
+        return res.send({ error: 'Missing authorization header!' });
       }
 
       const idToken = authorizationHeader.split(' ').pop();
@@ -57,7 +57,7 @@ const createFirebaseAuth = ({
             !user.email_verified
           ) {
             res.status(401);
-            return res.send({ error: 'You are not autherized!' });
+            return res.send({ error: 'You are not authorized!' });
           }
 
           res.locals.user = user; // Set the user object to locals
@@ -65,7 +65,7 @@ const createFirebaseAuth = ({
         })
         .catch(error => {
           res.status(401);
-          res.send({ error: 'You are not autherized!' });
+          res.send({ error: 'You are not authorized!' });
 
           next(error);
         });
